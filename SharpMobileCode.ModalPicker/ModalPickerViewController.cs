@@ -56,6 +56,11 @@ namespace SharpMobileCode.ModalPicker
 						DatePicker.Mode = UIDatePickerMode.Time;
 						PickerView = null;
 						break;
+					case ModalPickerType.DateAndTime:
+						DatePicker = new UIDatePicker(CGRect.Empty);
+						DatePicker.Mode = UIDatePickerMode.DateAndTime;
+						PickerView = null;
+						break;
 					case ModalPickerType.Custom:
 						DatePicker = null;
 						PickerView = new UIPickerView(CGRect.Empty);
@@ -127,6 +132,7 @@ namespace SharpMobileCode.ModalPicker
 			{
 				case ModalPickerType.Date:
 				case ModalPickerType.Time:
+				case ModalPickerType.DateAndTime:
 					DatePicker.BackgroundColor = UIColor.White;
 					_internalView.AddSubview(DatePicker);
 					break;
@@ -157,6 +163,7 @@ namespace SharpMobileCode.ModalPicker
 			{
 				case ModalPickerType.Date:
 				case ModalPickerType.Time:
+				case ModalPickerType.DateAndTime:
 					internalViewSize = new CGSize(width, DatePicker.Frame.Height + _headerBarHeight);
 					break;
 				case ModalPickerType.Custom:
@@ -199,6 +206,7 @@ namespace SharpMobileCode.ModalPicker
 			{
 				case ModalPickerType.Date:
 				case ModalPickerType.Time:
+				case ModalPickerType.DateAndTime:
 					DatePicker.Frame = new CGRect(DatePicker.Frame.X, _headerBarHeight, _internalView.Frame.Width,
 													  DatePicker.Frame.Height);
 					break;
@@ -247,7 +255,8 @@ namespace SharpMobileCode.ModalPicker
 	{
 		Date = 0,
 		Custom = 1,
-		Time = 2
+		Time = 2,
+		DateAndTime = 3
 	}
 }
 
